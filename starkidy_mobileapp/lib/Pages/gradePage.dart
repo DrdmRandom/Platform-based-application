@@ -16,34 +16,34 @@ class _GradePageState extends State<GradePage> {
       {
         "course": "PPL",
         "quizzes": [
-          {"name": "Quiz 1", "score": 90},
-          {"name": "Quiz 2", "score": 90},
+          {"name": "Quiz 1", "score": "A"},
+          {"name": "Quiz 2", "score": "A"},
         ],
         "assignments": [
-          {"name": "Assignment 1", "score": 90},
-          {"name": "Assignment 2", "score": 90},
+          {"name": "Assignment 1", "score": "A"},
+          {"name": "Assignment 2", "score": "A"},
         ],
       },
       {
         "course": "Alpro",
         "quizzes": [
-          {"name": "Quiz 1", "score": 85},
-          {"name": "Quiz 2", "score": 88},
+          {"name": "Quiz 1", "score": "A"},
+          {"name": "Quiz 2", "score": "A"},
         ],
         "assignments": [
-          {"name": "Assignment 1", "score": 87},
-          {"name": "Assignment 2", "score": 90},
+          {"name": "Assignment 1", "score": "A"},
+          {"name": "Assignment 2", "score": "A"},
         ],
       },
       {
         "course": "Matematika Diskrit",
         "quizzes": [
-          {"name": "Quiz 1", "score": 80},
-          {"name": "Quiz 2", "score": 82},
+          {"name": "Quiz 1", "score": "A"},
+          {"name": "Quiz 2", "score": "A"},
         ],
         "assignments": [
-          {"name": "Assignment 1", "score": 83},
-          {"name": "Assignment 2", "score": 85},
+          {"name": "Assignment 1", "score": "A"},
+          {"name": "Assignment 2", "score": "A"},
         ],
       },
     ],
@@ -51,34 +51,34 @@ class _GradePageState extends State<GradePage> {
       {
         "course": "RPL",
         "quizzes": [
-          {"name": "Quiz 1", "score": 92},
-          {"name": "Quiz 2", "score": 90},
+          {"name": "Quiz 1", "score": "A"},
+          {"name": "Quiz 2", "score": "A"},
         ],
         "assignments": [
-          {"name": "Assignment 1", "score": 91},
-          {"name": "Assignment 2", "score": 92},
+          {"name": "Assignment 1", "score": "A"},
+          {"name": "Assignment 2", "score": "A"},
         ],
       },
       {
         "course": "Logmat",
         "quizzes": [
-          {"name": "Quiz 1", "score": 85},
-          {"name": "Quiz 2", "score": 87},
+          {"name": "Quiz 1", "score": "A"},
+          {"name": "Quiz 2", "score": "A"},
         ],
         "assignments": [
-          {"name": "Assignment 1", "score": 86},
-          {"name": "Assignment 2", "score": 89},
+          {"name": "Assignment 1", "score": "A"},
+          {"name": "Assignment 2", "score": "A"},
         ],
       },
       {
         "course": "AKA",
         "quizzes": [
-          {"name": "Quiz 1", "score": 88},
-          {"name": "Quiz 2", "score": 90},
+          {"name": "Quiz 1", "score": "A"},
+          {"name": "Quiz 2", "score": "A"},
         ],
         "assignments": [
-          {"name": "Assignment 1", "score": 89},
-          {"name": "Assignment 2", "score": 92},
+          {"name": "Assignment 1", "score": "A"},
+          {"name": "Assignment 2", "score": "A"},
         ],
       },
     ],
@@ -117,20 +117,42 @@ class _GradePageState extends State<GradePage> {
                     ),
                   ],
                 ),
-                DropdownButton<String>(
-                  value: selectedYear,
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      selectedYear = newValue!;
-                    });
-                  },
-                  items: <String>['Tahun 1', 'Tahun 2']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      value: selectedYear,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedYear = newValue!;
+                        });
+                      },
+                      items: <String>['Tahun 1', 'Tahun 2']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Text(value, style: TextStyle(color: Colors.black)),
+                          ),
+                        );
+                      }).toList(),
+                      icon: Icon(Icons.arrow_drop_down, color: Colors.black),
+                      dropdownColor: Colors.white,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -153,18 +175,28 @@ class _GradePageState extends State<GradePage> {
                         if (course.containsKey('quizzes'))
                           ...course['quizzes'].map<Widget>((quiz) {
                             return ListTile(
+                              tileColor: Colors.white,
                               title: Text(
-                                "${quiz['name']}: ${quiz['score']}",
-                                style: TextStyle(color: Colors.white),
+                                quiz['name'],
+                                style: TextStyle(color: Colors.blue),
+                              ),
+                              trailing: Text(
+                                "${quiz['score']}",
+                                style: TextStyle(color: Colors.blue),
                               ),
                             );
                           }).toList(),
                         if (course.containsKey('assignments'))
                           ...course['assignments'].map<Widget>((assignment) {
                             return ListTile(
+                              tileColor: Colors.white,
                               title: Text(
-                                "${assignment['name']}: ${assignment['score']}",
-                                style: TextStyle(color: Colors.white),
+                                assignment['name'],
+                                style: TextStyle(color: Colors.blue),
+                              ),
+                              trailing: Text(
+                                "${assignment['score']}",
+                                style: TextStyle(color: Colors.blue),
                               ),
                             );
                           }).toList(),

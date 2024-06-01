@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../Pages/quizPage.dart';
+import '../Pages/assignmentPage.dart'; // Make sure to adjust this import path according to your project structure
 
 class QuizAssignmentListHome extends StatelessWidget {
   // List Map berisi Quiz dan Assignment
@@ -43,8 +45,8 @@ class QuizAssignmentListHome extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
                     color: Color.fromRGBO(90, 158, 183, 1),
-                    child: Container( // Menggunakan Container di sini
-                      width: 400, // Menentukan lebar card
+                    child: Container(
+                      width: 400,
                       child: ListTile(
                         title: Text(
                           item['title'] ?? '',
@@ -55,7 +57,10 @@ class QuizAssignmentListHome extends StatelessWidget {
                           style: TextStyle(color: Colors.white70),
                         ),
                         onTap: () {
-                          // Handle item tap
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => AssignmentPage()),
+                          );
                         },
                       ),
                     ),
