@@ -1,0 +1,124 @@
+import 'package:flutter/material.dart';
+import '../Components/headerBar.dart';
+
+void main() {
+  runApp(AttendancePageTeacher());
+}
+
+class AttendancePageTeacher extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Attendance App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: AttendanceScreen(),
+    );
+  }
+}
+
+class AttendanceScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(135),
+        child: HeaderBar(),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 10),
+            child: Text(
+              "Attendance",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              children: [
+                AttendanceCard(className: 'Kalkulus (03-A)'),
+                AttendanceCard(className: 'Fisika (02-B)'),
+                AttendanceCard(className: 'Rekayasa Perangkat Lunak (01-A)'),
+                AttendanceCard(className: 'Teori Bahasa dan Automata (02-A)'),
+                AttendanceCard(className: 'Jaringan Komputer (01-B)'),
+              ],
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AttendanceCard extends StatelessWidget {
+  final String className;
+
+  AttendanceCard({required this.className});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Color.fromRGBO(90, 158, 183, 1),
+      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      child: InkWell(
+        onTap: () {
+          // Handle card tap
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                className,
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
+              SizedBox(height: 8.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      // Add your edit button functionality here
+                    },
+                    child: Text('Edit', style: TextStyle(color: Colors.white)),
+                  ),
+                  SizedBox(width: 8.0),
+                  TextButton(
+                    onPressed: () {
+                      // Add your input button functionality here
+                    },
+                    child: Text('Input', style: TextStyle(color: Colors.white)),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

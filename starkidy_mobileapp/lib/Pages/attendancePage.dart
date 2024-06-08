@@ -40,7 +40,7 @@ class AttendancePage extends StatelessWidget {
                     ),
                     SizedBox(
                         width:
-                            8), // Berikan jarak horizontal antara gambar dan teks
+                        8), // Berikan jarak horizontal antara gambar dan teks
                     Text(
                       "Attendance",
                       style: TextStyle(
@@ -60,7 +60,7 @@ class AttendancePage extends StatelessWidget {
               itemBuilder: (context, index) {
                 final title = attendanceData.keys.toList()[index];
                 final List<Map<String, dynamic>> courses =
-                    attendanceData[title]!;
+                attendanceData[title]!;
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
