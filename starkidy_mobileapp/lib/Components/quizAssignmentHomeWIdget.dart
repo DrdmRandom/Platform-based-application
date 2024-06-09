@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../Pages/quizPage.dart';
-import '../Pages/assignmentPage.dart'; // Make sure to adjust this import path according to your project structure
+import '../Pages/assignmentPage.dart'; // Adjust import path according to your project structure
 
 class QuizAssignmentListHome extends StatelessWidget {
   // List Map berisi Quiz dan Assignment
   final List<Map<String, String>> quizAssignmentList = [
-    {"title": "Quiz 1", "course": "Rekayasa Perangkat Lunak"},
-    {"title": "Assignment 1", "course": "Rekayasa Perangkat Lunak"},
-    {"title": "Quiz 3", "course": "Rekayasa Perangkat Lunak"},
-    {"title": "Assignment 4", "course": "Rekayasa Perangkat Lunak"},
+    {"title": "Quiz 1", "course": "Rekayasa Perangkat Lunak", "type": "quiz"},
+    {"title": "Assignment 1", "course": "Rekayasa Perangkat Lunak", "type": "assignment"},
+    {"title": "Quiz 3", "course": "Rekayasa Perangkat Lunak", "type": "quiz"},
+    {"title": "Assignment 4", "course": "Rekayasa Perangkat Lunak", "type": "assignment"},
   ];
 
   @override
@@ -57,10 +57,17 @@ class QuizAssignmentListHome extends StatelessWidget {
                           style: TextStyle(color: Colors.white70),
                         ),
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => AssignmentPage()),
-                          );
+                          if (item['type'] == 'quiz') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => QuizPage()),
+                            );
+                          } else if (item['type'] == 'assignment') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => AssignmentPage()),
+                            );
+                          }
                         },
                       ),
                     ),
