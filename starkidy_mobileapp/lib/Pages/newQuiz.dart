@@ -1,29 +1,12 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart';
 
-void main() {
-  runApp(NewQuizApp());
-}
-
-class NewQuizApp extends StatelessWidget {
+class newQuiz extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'New Quiz',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: NewQuizScreen(),
-    );
-  }
+  _newQuizState createState() => _newQuizState();
 }
 
-class NewQuizScreen extends StatefulWidget {
-  @override
-  _NewQuizScreenState createState() => _NewQuizScreenState();
-}
-
-class _NewQuizScreenState extends State<NewQuizScreen> {
+class _newQuizState extends State<newQuiz> { // Ensure _newQuizState extends State<newQuiz>
   final _formKey = GlobalKey<FormState>();
   String quizName = '';
   int timeLimitHour = 0;
@@ -31,7 +14,7 @@ class _NewQuizScreenState extends State<NewQuizScreen> {
   int attemptAllowed = 1;
   DateTime dueTime = DateTime.now();
   List<Map<String, dynamic>> questions = [
-    {'question': '', 'answer': ''},
+    {'question': '', 'answers': [], 'correctAnswerIndex': -1},
   ];
 
   @override
@@ -192,6 +175,7 @@ class _NewQuizScreenState extends State<NewQuizScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextFormField(
                       decoration: InputDecoration(
@@ -205,16 +189,58 @@ class _NewQuizScreenState extends State<NewQuizScreen> {
                         });
                       },
                     ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Answer',
-                        filled: true,
-                        fillColor: Colors.white,
-                      ),
-                      onChanged: (value) {
-                        setState(() {
-                          questions[index]['answer'] = value;
-                        });
+                    ...List.generate(
+                      questions[index]['answers'].length + 1,
+                          (answerIndex) {
+                        return answerIndex < questions[index]['answers'].length
+                            ? Row(
+                          children: [
+                            Radio<int>(
+                              value: answerIndex,
+                              groupValue: questions[index]['correctAnswerIndex'],
+                              onChanged: (int? value) {
+                                setState(() {
+                                  questions[index]['correctAnswerIndex'] = value!;
+                                });
+                              },
+                            ),
+                            Expanded(
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                  labelText: 'Answer ${answerIndex + 1}',
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                ),
+                                onChanged: (value) {
+                                  setState(() {
+                                    questions[index]['answers'][answerIndex] = value;
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                            : Row(
+                          children: [
+                            Radio<int>(
+                              value: answerIndex,
+                              groupValue: questions[index]['correctAnswerIndex'],
+                              onChanged: (int? value) {
+                                setState(() {
+                                  questions[index]['correctAnswerIndex'] = value!;
+                                });
+                              },
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  questions[index]['answers'].add('');
+                                });
+                              },
+                              child: Text('Add Answer'),
+                            ),
+                          ],
+                        );
                       },
                     ),
                   ],
@@ -226,7 +252,7 @@ class _NewQuizScreenState extends State<NewQuizScreen> {
         TextButton(
           onPressed: () {
             setState(() {
-              questions.add({'question': '', 'answer': ''});
+              questions.add({'question': '', 'answers': [], 'correctAnswerIndex': -1});
             });
           },
           child: Text('Add Question'),

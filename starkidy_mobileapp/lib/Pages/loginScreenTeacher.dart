@@ -3,8 +3,8 @@ import 'package:starkidy_mobileapp/Components/textField.dart';
 import 'package:starkidy_mobileapp/Components/button.dart';
 import '../Components/bottomNavBar.dart' as bottomNavBar;
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginScreenTeacher extends StatelessWidget {
+  LoginScreenTeacher({super.key});
 
   // text editing controllers
   final emailAddressController = TextEditingController();
@@ -13,7 +13,7 @@ class LoginScreen extends StatelessWidget {
   // sign user in method
   void signUserIn(BuildContext context) {
     // You can perform any authentication logic here
-    
+
     // Navigate to BottomNavigationBar
     Navigator.push(
       context,
@@ -34,11 +34,11 @@ class LoginScreen extends StatelessWidget {
 
               // welcome back, you've been missed!
               Text(
-                'Welcome Student',
+                'Welcome Teacher',
                 style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 48,
-                  fontWeight: FontWeight.bold
+                    color: Colors.black,
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold
                 ),
               ),
 

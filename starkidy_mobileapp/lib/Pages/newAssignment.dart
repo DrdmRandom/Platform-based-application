@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart';
 
-void main() {
-  runApp(NewAssignmentApp());
+class newAssignment extends StatefulWidget {
+  @override
+  _newAssignmentState createState() => _newAssignmentState();
 }
 
-class NewAssignmentApp extends StatelessWidget {
+class _newAssignmentState extends State<newAssignment> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

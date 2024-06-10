@@ -1,7 +1,8 @@
 // lib/splash_screen.dart
 
 import 'package:flutter/material.dart';
-import 'loginScreen.dart'; // Import the LoginScreen widget
+import 'loginScreen.dart';
+import 'loginScreenTeacher.dart'; // Import the LoginScreen widget
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -38,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
             buildButton('Teacher', () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
+                MaterialPageRoute(builder: (context) => LoginScreenTeacher()),
               );
             }),
           ],
