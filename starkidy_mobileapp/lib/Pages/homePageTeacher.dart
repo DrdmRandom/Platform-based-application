@@ -47,12 +47,11 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: Column(
                             children: [
-                              Icon(Icons.calendar_today_outlined,size: 60,color: Color.fromRGBO(90, 158, 183, 1)),
+                              Icon(Icons.calendar_today_outlined, size: 60, color: Color.fromRGBO(90, 158, 183, 1)),
                               Text("Attendance"),
                             ],
                           ),
                         ),
-
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -62,14 +61,14 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: Column(
                             children: [
-                              Icon(Icons.grade_outlined,size: 60,color: Color.fromRGBO(90, 158, 183, 1)),
+                              Icon(Icons.grade_outlined, size: 60, color: Color.fromRGBO(90, 158, 183, 1)),
                               Text("Grade"),
                             ],
                           ),
                         ),
                         Column(
                           children: [
-                            Icon(Icons.book_outlined,size: 60,color: Color.fromRGBO(90, 158, 183, 1)),
+                            Icon(Icons.book_outlined, size: 60, color: Color.fromRGBO(90, 158, 183, 1)),
                             Text("Report"),
                           ],
                         ),

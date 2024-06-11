@@ -7,8 +7,6 @@ import '../Pages/newAssignment.dart'; // Import newAssignment.dart page
 class QuizAssignmentListTeacherHome extends StatelessWidget {
   // List Map berisi Quiz dan Assignment
   final List<Map<String, String>> quizAssignmentList = [
-    {"title": "+ New Quiz", "course": "Add New Quiz", "type": "newquiz"},
-    {"title": "+ New Assignment", "course": "Add New Assignment", "type": "newassignment"},
     {"title": "Quiz 1", "course": "Rekayasa Perangkat Lunak", "type": "quiz"},
     {"title": "Assignment 1", "course": "Rekayasa Perangkat Lunak", "type": "assignment"},
     {"title": "Quiz 3", "course": "Rekayasa Perangkat Lunak", "type": "quiz"},
@@ -40,6 +38,50 @@ class QuizAssignmentListTeacherHome extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              color: Colors.blue,
+              child: ListTile(
+                title: Text(
+                  "+ New Quiz",
+                  style: TextStyle(color: Colors.white),
+                ),
+                subtitle: Text(
+                  "Add New Quiz",
+                  style: TextStyle(color: Colors.white70),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => newQuiz()),
+                  );
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              color: Colors.blue,
+              child: ListTile(
+                title: Text(
+                  "+ New Assignment",
+                  style: TextStyle(color: Colors.white),
+                ),
+                subtitle: Text(
+                  "Add New Assignment",
+                  style: TextStyle(color: Colors.white70),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => newAssignment()),
+                  );
+                },
+              ),
+            ),
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: quizAssignmentList.length,
@@ -48,9 +90,7 @@ class QuizAssignmentListTeacherHome extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
-                    color: item['type'] == 'newquiz' || item['type'] == 'newassignment'
-                        ? Colors.blue // Change color for special items
-                        : Color.fromRGBO(90, 158, 183, 1), // Default color for regular items
+                    color: Color.fromRGBO(90, 158, 183, 1), // Default color for regular items
                     child: Container(
                       width: 400,
                       child: ListTile(
@@ -72,16 +112,6 @@ class QuizAssignmentListTeacherHome extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => AssignmentPage()),
-                            );
-                          } else if (item['type'] == 'newquiz') {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => newQuiz()),
-                            );
-                          } else if (item['type'] == 'newassignment') {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => newAssignment()),
                             );
                           }
                         },
