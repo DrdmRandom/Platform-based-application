@@ -1,0 +1,7 @@
+1. Import eschool-saas.sql
+2. Edit file .env change info your domain and database
+
+
+Admin Login
+Email: superadmin@gmail.com
+Password: superadmin
