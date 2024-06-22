@@ -11,6 +11,8 @@ class QuizAssignmentListTeacherHome extends StatelessWidget {
     {"title": "Assignment 1", "course": "Rekayasa Perangkat Lunak", "type": "assignment"},
     {"title": "Quiz 3", "course": "Rekayasa Perangkat Lunak", "type": "quiz"},
     {"title": "Assignment 4", "course": "Rekayasa Perangkat Lunak", "type": "assignment"},
+    {"title": "New Assignment", "course": "New Assignment", "type": "NewAssignment"},
+    {"title": "New Quiz", "course": "New Quiz", "type": "NewQuiz"},
   ];
 
   @override
@@ -36,50 +38,6 @@ class QuizAssignmentListTeacherHome extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              color: Colors.blue,
-              child: ListTile(
-                title: Text(
-                  "+ New Quiz",
-                  style: TextStyle(color: Colors.white),
-                ),
-                subtitle: Text(
-                  "Add New Quiz",
-                  style: TextStyle(color: Colors.white70),
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => newQuiz()),
-                  );
-                },
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              color: Colors.blue,
-              child: ListTile(
-                title: Text(
-                  "+ New Assignment",
-                  style: TextStyle(color: Colors.white),
-                ),
-                subtitle: Text(
-                  "Add New Assignment",
-                  style: TextStyle(color: Colors.white70),
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => newAssignment()),
-                  );
-                },
-              ),
             ),
           ),
           Expanded(
@@ -112,6 +70,16 @@ class QuizAssignmentListTeacherHome extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => AssignmentPage()),
+                            );
+                          } else if (item['type'] == 'NewAssignment'){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => newAssignment()),
+                            );
+                          } else if (item['type'] == 'NewQuiz'){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => newQuiz()),
                             );
                           }
                         },
