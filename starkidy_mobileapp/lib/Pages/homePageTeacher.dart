@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => AttendancePage()),
+                              MaterialPageRoute(builder: (context) => AttendancePage(studentId: '',)),
                             );
                           },
                           child: Column(

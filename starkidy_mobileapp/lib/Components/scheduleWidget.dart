@@ -1,13 +1,103 @@
 import 'package:flutter/material.dart';
 
+class ClassSchedule {
+  final String mataKuliah;
+  final String waktu;
+  final String ruangan;
+  final String kodeGuru;
+
+  ClassSchedule({
+    required this.mataKuliah,
+    required this.waktu,
+    required this.ruangan,
+    required this.kodeGuru,
+  });
+
+  DateTime getStartTime() {
+    final timeParts = waktu.split('-')[0].split(':');
+    final now = DateTime.now();
+    return DateTime(now.year, now.month, now.day, int.parse(timeParts[0]), int.parse(timeParts[1]));
+  }
+
+  DateTime getEndTime() {
+    final timeParts = waktu.split('-')[1].split(':');
+    final now = DateTime.now();
+    return DateTime(now.year, now.month, now.day, int.parse(timeParts[0]), int.parse(timeParts[1]));
+  }
+}
+
+class ScheduleWidgetController extends ChangeNotifier {
+  List<ClassSchedule> schedules = [];
+
+  // Weekly schedule data moved into the controller
+  final Map<int, List<ClassSchedule>> weeklySchedule = {
+    1: [ // Monday
+      ClassSchedule(mataKuliah: "Matematika", waktu: "08:00-09:30", ruangan: "Gedung A - 0101", kodeGuru: "MKH"),
+      ClassSchedule(mataKuliah: "IPA", waktu: "10:00-11:30", ruangan: "Gedung A - 0102", kodeGuru: "DKJ"),
+      ClassSchedule(mataKuliah: "Sejarah", waktu: "12:00-13:30", ruangan: "Gedung A - 0103", kodeGuru: "PRS"),
+    ],
+    2: [ // Tuesday
+      ClassSchedule(mataKuliah: "Inggris", waktu: "08:00-09:30", ruangan: "Gedung A - 0201", kodeGuru: "LTH"),
+      ClassSchedule(mataKuliah: "Sains", waktu: "10:00-11:30", ruangan: "Gedung A - 0202", kodeGuru: "FNC"),
+      ClassSchedule(mataKuliah: "Olah Raga (Berenang)", waktu: "12:00-13:30", ruangan: "Kolam Renang - 0001", kodeGuru: "SWM"),
+    ],
+    3: [ // Wednesday
+      ClassSchedule(mataKuliah: "Matematika", waktu: "08:00-09:30", ruangan: "Gedung A - 0101", kodeGuru: "MKH"),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "10:00-11:30", ruangan: "Gedung A - 0301", kodeGuru: "NTP"),
+      ClassSchedule(mataKuliah: "Sejarah", waktu: "12:00-13:30", ruangan: "Gedung A - 0103", kodeGuru: "PRS"),
+    ],
+    4: [ // Thursday
+      ClassSchedule(mataKuliah: "Olahraga", waktu: "08:00-09:30", ruangan: "Gym - 0401", kodeGuru: "GYM"),
+      ClassSchedule(mataKuliah: "Inggris", waktu: "10:00-11:30", ruangan: "Gedung A - 0201", kodeGuru: "LTH"),
+      ClassSchedule(mataKuliah: "IPA", waktu: "12:00-13:30", ruangan: "Gedung A - 0102", kodeGuru: "DKJ"),
+    ],
+    5: [ // Friday
+      ClassSchedule(mataKuliah: "Fisika", waktu: "08:00-09:30", ruangan: "Gedung A - 0301", kodeGuru: "NTP"),
+      ClassSchedule(mataKuliah: "Seni Rupa", waktu: "10:00-11:30", ruangan: "Art Studio - 0501", kodeGuru: "ART"),
+    ]
+  };
+
+  List<ClassSchedule> getTodaySchedule() {
+    final today = DateTime.now().weekday;
+    return weeklySchedule[today] ?? [];
+  }
+}
+
 class ScheduleWidget extends StatelessWidget {
+  final ScheduleWidgetController controller = ScheduleWidgetController();
+
+  String getStatus(ClassSchedule schedule) {
+    final now = DateTime.now();
+    if (now.isBefore(schedule.getStartTime())) {
+      if (schedule.getStartTime().difference(now).inMinutes <= 30) {
+        return "Segera Dimulai";
+      }
+      return "Belum Dimulai";
+    } else if (now.isAfter(schedule.getEndTime())) {
+      return "Selesai";
+    } else {
+      return "Sedang Berlangsung";
+    }
+  }
+
+  Color getStatusColor(String status) {
+    switch (status) {
+      case "Belum Dimulai":
+        return Colors.grey;
+      case "Segera Dimulai":
+        return Colors.yellow;
+      case "Sedang Berlangsung":
+        return Colors.blue;
+      case "Selesai":
+        return Colors.red;
+      default:
+        return Colors.black;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Data
-    String mataKuliah = "CRI3G3 - Rekayasa Perangkat Lunak";
-    String waktu = "08:30-11:30";
-    String ruangan = "TULT 0714";
-    String kodeDosen = "HPY";
+    final todaySchedule = controller.getTodaySchedule();
 
     return Column(
       children: [
@@ -33,8 +123,10 @@ class ScheduleWidget extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              GestureDetector(
+            children: todaySchedule.map((schedule) {
+              final status = getStatus(schedule);
+              final statusColor = getStatusColor(status);
+              return GestureDetector(
                 onTap: () {
                   // Handle card tap here
                 },
@@ -61,7 +153,7 @@ class ScheduleWidget extends StatelessWidget {
                       children: [
                         // First row: Course name
                         Text(
-                          mataKuliah,
+                          schedule.mataKuliah,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
@@ -73,14 +165,17 @@ class ScheduleWidget extends StatelessWidget {
                         Row(
                           children: [
                             // Letakkan radio button di sebelah kiri
-                            Radio(
-                              value: 1,
-                              groupValue: 1,
-                              onChanged: (value) {},
-                              activeColor: Color.fromRGBO(90, 158, 183, 1), // Ubah warna radio button
+                            Container(
+                              margin: EdgeInsets.only(right: 10),
+                              width: 16,
+                              height: 16,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: statusColor,
+                              ),
                             ),
                             Text(
-                              'Sedang Berlangsung',
+                              status,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -113,7 +208,7 @@ class ScheduleWidget extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      waktu,
+                                      schedule.waktu,
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
@@ -137,7 +232,7 @@ class ScheduleWidget extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      ruangan,
+                                      schedule.ruangan,
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
@@ -152,7 +247,7 @@ class ScheduleWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Kode Dosen',
+                                    'Kode Guru',
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
@@ -161,7 +256,7 @@ class ScheduleWidget extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      kodeDosen,
+                                      schedule.kodeGuru,
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
@@ -178,12 +273,19 @@ class ScheduleWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-              // Additional cards can be added here in the same format
-            ],
+              );
+            }).toList(),
           ),
         ),
       ],
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: Scaffold(
+      body: ScheduleWidget(),
+    ),
+  ));
 }
