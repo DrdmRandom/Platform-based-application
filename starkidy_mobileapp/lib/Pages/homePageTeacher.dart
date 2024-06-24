@@ -8,12 +8,13 @@ import '../Components/ScheduleWidget.dart';
 import 'attendancePageTeacher.dart';
 import 'gradePageTeacher.dart';
 
-class HomePage extends StatefulWidget {
+
+class HomePageTeacher extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageStateTeacher createState() => _HomePageStateTeacher();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageStateTeacher extends State<HomePageTeacher> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
