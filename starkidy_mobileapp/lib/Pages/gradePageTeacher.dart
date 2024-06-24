@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart'; // Ensure this path is correct
 
+//nanti diapus yo
 void main() {
-  runApp(AttendancePageTeacher());
+  runApp(GradePageTeacher());
 }
 
-class AttendancePageTeacher extends StatelessWidget {
+class GradePageTeacher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Attendance App',
+      title: 'Grade App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AttendanceScreen(),
+      home: GradeScreen(),
     );
   }
 }
+//sampe sini
 
-class AttendanceScreen extends StatefulWidget {
+class GradeScreen extends StatefulWidget {
   @override
-  _AttendanceScreenState createState() => _AttendanceScreenState();
+  _GradeScreenState createState() => _GradeScreenState();
 }
 
-class _AttendanceScreenState extends State<AttendanceScreen> {
+class _GradeScreenState extends State<GradeScreen> {
   // Dropdown value
   String selectedStudent = 'John Doe';
 
@@ -61,7 +63,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Attendance",
+                  "Grades",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -152,22 +154,6 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
           ),
         ],
       ),

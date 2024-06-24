@@ -6,7 +6,9 @@ import '../Pages/chatPage.dart';
 import '../Pages/profilePage.dart';
 import '../Components/ScheduleWidget.dart';
 import '../Pages/attendancePage.dart';
+import 'attendancePageTeacher.dart';
 import 'gradePage.dart';
+import 'gradePageTeacher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -42,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => AttendancePage(studentId: '',)),
+                              MaterialPageRoute(builder: (context) => AttendancePageTeacher()),
                             );
                           },
                           child: Column(
@@ -56,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => GradePage()),
+                              MaterialPageRoute(builder: (context) => GradePageTeacher()),
                             );
                           },
                           child: Column(

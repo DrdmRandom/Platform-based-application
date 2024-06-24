@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart';
 
+//nanti diapus yo
 void main() {
   runApp(AttendancePageTeacher());
 }
@@ -17,6 +18,7 @@ class AttendancePageTeacher extends StatelessWidget {
     );
   }
 }
+//sampe sini
 
 class AttendanceScreen extends StatelessWidget {
   @override
@@ -50,22 +52,6 @@ class AttendanceScreen extends StatelessWidget {
                 AttendanceCard(className: 'Jaringan Komputer (01-B)'),
               ],
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starkidy_mobileapp/Pages/reportBook.dart';
 import '../Components/headerBar.dart';
 import '../Components/bottomNavbar.dart' as bottomnavbar;
 import '../Pages/chatPage.dart';
@@ -67,12 +68,22 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ),
-                        Column(
-                          children: [
-                            Icon(Icons.book_outlined,size: 60,color: Color.fromRGBO(90, 158, 183, 1)),
-                            Text("Report"),
-                          ],
+
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ReportBookPage()),
+                            );
+                          },
+                          child: Column(
+                            children: [
+                              Icon(Icons.book_outlined,size: 60,color: Color.fromRGBO(90, 158, 183, 1)),
+                              Text("Report"),
+                            ],
+                          ),
                         ),
+
                       ],
                     ),
                     ScheduleWidget(),
