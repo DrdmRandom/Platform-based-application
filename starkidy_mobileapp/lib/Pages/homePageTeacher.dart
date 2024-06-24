@@ -7,6 +7,7 @@ import '../Components/quizAssignmentHomeWidgetTeacher.dart';
 import '../Components/ScheduleWidget.dart';
 import 'attendancePageTeacher.dart';
 import 'gradePageTeacher.dart';
+import 'reportBookTeacher.dart';
 
 
 class HomePageTeacher extends StatefulWidget {
@@ -67,11 +68,20 @@ class _HomePageStateTeacher extends State<HomePageTeacher> {
                             ],
                           ),
                         ),
-                        Column(
-                          children: [
-                            Icon(Icons.book_outlined, size: 60, color: Color.fromRGBO(90, 158, 183, 1)),
-                            Text("Report"),
-                          ],
+
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ReportBookPage()),
+                            );
+                          },
+                          child: Column(
+                            children: [
+                              Icon(Icons.book_outlined,size: 60,color: Color.fromRGBO(90, 158, 183, 1)),
+                              Text("Report"),
+                            ],
+                          ),
                         ),
                       ],
                     ),

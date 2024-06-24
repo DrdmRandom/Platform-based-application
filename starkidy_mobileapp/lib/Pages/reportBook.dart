@@ -2,20 +2,6 @@ import 'package:flutter/material.dart';
 import '../Components/headerBar.dart';
 import '../Components/bottomNavbar.dart' as bottomnavbar;
 
-//nanti diapus yo
-void main() {
-  runApp(ReportBookApp());
-}
-
-class ReportBookApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ReportBookPage(),
-    );
-  }
-}
-//sampe sini
 
 class ReportBookPage extends StatelessWidget {
   @override
