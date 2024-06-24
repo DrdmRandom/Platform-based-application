@@ -1,24 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart';
 
-//nanti diapus yo
-void main() {
-  runApp(AttendancePageTeacher());
-}
-
-class AttendancePageTeacher extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Attendance App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: AttendanceScreen(),
-    );
-  }
-}
-//sampe sini
 
 class AttendanceScreen extends StatelessWidget {
   @override

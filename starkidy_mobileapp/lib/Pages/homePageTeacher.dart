@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBarTeacher.dart';
 import '../Components/bottomNavbar.dart' as bottomnavbar;
-import '../Components/quizAssignmentHomeWidgetTeacher.dart';
 import '../Pages/chatPage.dart';
 import '../Pages/profilePage.dart';
+import '../Components/quizAssignmentHomeWidgetTeacher.dart';
 import '../Components/ScheduleWidget.dart';
-import '../Pages/attendancePage.dart';
 import 'attendancePageTeacher.dart';
-import 'gradePage.dart';
 import 'gradePageTeacher.dart';
 
 class HomePage extends StatefulWidget {
@@ -44,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => AttendancePageTeacher()),
+                              MaterialPageRoute(builder: (context) => AttendanceScreen()),
                             );
                           },
                           child: Column(
@@ -58,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => GradePageTeacher()),
+                              MaterialPageRoute(builder: (context) => GradeScreen()),
                             );
                           },
                           child: Column(

@@ -1,24 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart'; // Ensure this path is correct
 
-//nanti diapus yo
-void main() {
-  runApp(GradePageTeacher());
-}
-
-class GradePageTeacher extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Grade App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: GradeScreen(),
-    );
-  }
-}
-//sampe sini
 
 class GradeScreen extends StatefulWidget {
   @override
