@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart';
-
+import '../Components/bottomNavBarTeacher.dart' as bottomnavbar;
 
 class AttendanceScreen extends StatelessWidget {
   @override
