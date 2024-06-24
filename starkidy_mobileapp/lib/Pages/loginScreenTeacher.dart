@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:starkidy_mobileapp/Components/textField.dart';
 import 'package:starkidy_mobileapp/Components/button.dart';
 import '../Components/bottomNavBar.dart' as bottomNavBar;
+import 'homePageTeacher.dart';
 
 class LoginScreenTeacher extends StatelessWidget {
   LoginScreenTeacher({super.key});
@@ -17,7 +18,7 @@ class LoginScreenTeacher extends StatelessWidget {
     // Navigate to BottomNavigationBar
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => bottomNavBar.BottomNavigationBar()),
+      MaterialPageRoute(builder: (context) => HomePageTeacher()),
     );
   }
 
