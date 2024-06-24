@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../Components/bottomNavBarTeacher.dart';
 import '../Components/headerBarTeacher.dart'; // Import your headerBar.dart file
-import '../Components/bottomNavBarTeacher.dart' ; // Import your bottomNavBar.dart file
 import '../Pages/homePageTeacher.dart';
 import '../Pages/profilePageTeacher.dart';
 

@@ -68,7 +68,7 @@ class ProfileBody extends StatelessWidget {
         Divider(height: 1, color: Colors.grey),
         ListTile(
           leading: Icon(Icons.location_on),
-          title: Text('New York, USA'),
+          title: Text('Bojongsoang, Bandung'),
           onTap: () {
             // Handle tapping the location
           },
