@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart';
-import '../controllers/attendance_controller.dart';
+// import '../controllers/attendance_controller.dart'; // Remove this line
 
 class AttendancePage extends StatelessWidget {
   final String studentId;
@@ -122,5 +122,43 @@ class AttendancePage extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class AttendanceController {
+  Future<Map<String, List<Map<String, dynamic>>>> fetchAttendance(String studentId) async {
+    // Hardcoded attendance data
+    return {
+      'Semester 1': [
+        {'course': 'Matematika', 'attendance': 95},
+        {'course': 'Ilmu Pengetahuan Alam(IPA)', 'attendance': 82},
+        {'course': 'Ilmu Pengentahuan Sejarah(IPS)', 'attendance': 87},
+        {'course': 'Inggris', 'attendance': 92},
+        {'course': 'Sains', 'attendance': 88},
+        {'course': 'Olah Raga', 'attendance': 80},
+        {'course': 'Fisika', 'attendance': 99},
+        {'course': 'Seni Rup', 'attendance': 89},
+      ],
+      'Semester 2': [
+        {'course': 'Matematika', 'attendance': 98},
+        {'course': 'Ilmu Pengetahuan Alam(IPA)', 'attendance': 80},
+        {'course': 'Ilmu Pengentahuan Sejarah(IPS)', 'attendance': 88},
+        {'course': 'Inggris', 'attendance': 91},
+        {'course': 'Sains', 'attendance': 89},
+        {'course': 'Olah Raga', 'attendance': 87},
+        {'course': 'Fisika', 'attendance': 80},
+        {'course': 'Seni Rup', 'attendance': 99},
+      ],
+      'Semester 3': [
+        {'course': 'Matematika', 'attendance': 100},
+        {'course': 'Ilmu Pengetahuan Alam(IPA)', 'attendance': 100},
+        {'course': 'Ilmu Pengentahuan Sejarah(IPS)', 'attendance': 100},
+        {'course': 'Inggris', 'attendance': 100},
+        {'course': 'Sains', 'attendance': 100},
+        {'course': 'Olah Raga', 'attendance': 100},
+        {'course': 'Fisika', 'attendance': 100},
+        {'course': 'Seni Rup', 'attendance': 100},
+      ],
+    };
   }
 }
