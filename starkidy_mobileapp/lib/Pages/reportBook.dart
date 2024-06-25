@@ -32,48 +32,68 @@ class ReportBookPage extends StatelessWidget {
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(8.0),
-                itemCount: 5, // Number of weeks
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text('Week ${5 - index}'),
-                            content: Container(
-                              width: 100,
-                              height: 100,
-                              child: Center(
-                                child: Text('Content for Week ${5 - index}'),
+                itemCount: 3, // Number of semesters
+                itemBuilder: (context, semesterIndex) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: Text(
+                          'Semester ${semesterIndex + 1}',
+                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      ListView.builder(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: 4, // Number of terms in each semester
+                        itemBuilder: (context, termIndex) {
+                          return GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text('Term ${termIndex + 1} - Semester ${semesterIndex + 1}'),
+                                    content: Container(
+                                      width: 100,
+                                      height: 100,
+                                      child: Center(
+                                        child: Text('Performance and exam results for Term ${termIndex + 1}, Semester ${semesterIndex + 1}'),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8.0),
+                              child: Container(
+                                height: 80,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Term ${termIndex + 1}',
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
                           );
                         },
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Container(
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Week ${5 - index}',
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ],
-                          ),
-                        ),
                       ),
-                    ),
+                    ],
                   );
                 },
               ),
