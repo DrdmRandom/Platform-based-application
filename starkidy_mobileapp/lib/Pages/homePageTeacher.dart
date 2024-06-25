@@ -85,7 +85,7 @@ class HomeContent extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => AttendanceScreen()),
+                          MaterialPageRoute(builder: (context) => AttendancePageTeacher()),
                         );
                       },
                       child: Column(
