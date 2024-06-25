@@ -4,16 +4,10 @@ import '../Pages/loginScreenTeacher.dart';
 
 class SplashScreenController {
   void navigateToStudentLogin(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => LoginScreen()),
-    );
+    Navigator.pushNamed(context, '/loginStudent');
   }
 
   void navigateToTeacherLogin(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => LoginScreenTeacher()),
-    );
+    Navigator.pushNamed(context, '/loginTeacher');
   }
 }

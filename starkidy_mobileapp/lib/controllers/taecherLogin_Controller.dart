@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:starkidy_mobileapp/Pages/homePage.dart';
 
-class LoginController {
+import '../Pages/homePageTeacher.dart';
+
+class TeacherLoginController {
   final SupabaseClient _supabaseClient;
 
-  LoginController(this._supabaseClient);
+  TeacherLoginController(this._supabaseClient);
 
   Future<void> signUserIn(BuildContext context, String email, String password) async {
     // Show loading dialog
@@ -40,7 +42,7 @@ class LoginController {
         print('Sign in successful!');
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder: (context) => HomePageTeacher()),
         );
       } else {
         // Since Supabase does not provide detailed errors, assume any non-success is a password error

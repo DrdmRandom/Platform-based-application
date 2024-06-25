@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart'; // Import Supabase package
 import 'package:starkidy_mobileapp/Components/textField.dart';
 import 'package:starkidy_mobileapp/Components/button.dart';
+import 'package:starkidy_mobileapp/supabase_service.dart';
 import '../Components/bottomNavBarTeacher.dart';
-import 'homePageTeacher.dart';
+import '../controllers/login_Controller.dart';
+import '../controllers/taecherLogin_Controller.dart';
 
 class LoginScreenTeacher extends StatelessWidget {
   LoginScreenTeacher({super.key});
@@ -12,13 +15,14 @@ class LoginScreenTeacher extends StatelessWidget {
   final passwordController = TextEditingController();
 
   void signUserIn(BuildContext context) {
-    // You can perform any authentication logic here
-
-    // Navigate to BottomNavigationBar
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => BottomNavigationBarTeacher()),
-    );
+    SupabaseService.initializeTeacherSupabase().then((_) {
+      final loginController = TeacherLoginController(SupabaseService.teacherSupabaseClient);
+      loginController.signUserIn(
+        context,
+        emailAddressController.text,
+        passwordController.text,
+      );
+    });
   }
 
   @override
@@ -36,9 +40,9 @@ class LoginScreenTeacher extends StatelessWidget {
               Text(
                 'Welcome Teacher',
                 style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold
+                  color: Colors.black,
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
 
@@ -79,7 +83,7 @@ class LoginScreenTeacher extends StatelessWidget {
               const SizedBox(height: 10),
 
               MyButton(
-                onTap: () => signUserIn(context), // Pass context to the signUserIn method
+                onTap: () => signUserIn(context),
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Components/TeacherscheduleWidget.dart';
 import '../Components/headerBarTeacher.dart';
 import '../Components/bottomNavbar.dart' as bottomnavbar;
 import '../Pages/chatPage.dart';
@@ -75,7 +76,7 @@ class _HomePageStateTeacher extends State<HomePageTeacher> {
                         ),
                       ],
                     ),
-                    ScheduleWidget(),
+                    TeacherScheduleWidget(),
                     Expanded(
                       child: QuizAssignmentListTeacherHome(),
                     ),

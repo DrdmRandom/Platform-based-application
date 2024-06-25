@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:starkidy_mobileapp/components/textField.dart';
 import 'package:starkidy_mobileapp/components/button.dart';
-import 'package:starkidy_mobileapp/controllers/login_Controller.dart';
+import 'package:starkidy_mobileapp/controllers/login_controller.dart';
+import 'package:starkidy_mobileapp/supabase_service.dart';
 import '../Components/bottomNavBar.dart' as bottomnavbar;
 
 class LoginScreen extends StatelessWidget {
@@ -11,16 +12,15 @@ class LoginScreen extends StatelessWidget {
   final emailAddressController = TextEditingController();
   final passwordController = TextEditingController();
 
-  final LoginController _loginController = LoginController();
-
   void signUserIn(BuildContext context) {
-    // You can perform any authentication logic here
-
-    // Navigate to BottomNavigationBar
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => bottomnavbar.BottomNavigationBar()),
-    );
+    SupabaseService.initializeStudentSupabase().then((_) {
+      final loginController = LoginController(SupabaseService.studentSupabaseClient);
+      loginController.signUserIn(
+        context,
+        emailAddressController.text,
+        passwordController.text,
+      );
+    });
   }
 
   @override
@@ -69,11 +69,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 MyButton(
-                  onTap: () => _loginController.signUserIn(
-                      context,
-                      emailAddressController.text,
-                      passwordController.text
-                  ),
+                  onTap: () => signUserIn(context),
                 ),
               ],
             ),

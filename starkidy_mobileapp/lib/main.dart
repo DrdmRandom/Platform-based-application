@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:starkidy_mobileapp/Pages/splashScreen.dart';
-import '../Pages/homePage.dart';
-import '../Pages/quizAttemptPage.dart'; // Import your quiz page
+import 'package:starkidy_mobileapp/Pages/homePage.dart';
+import 'package:starkidy_mobileapp/Pages/quizAttemptPage.dart';
+
+import 'Pages/loginScreen.dart';
+import 'Pages/loginScreenTeacher.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,10 +19,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/homePage': (context) => HomePage(), // Define the home page route
-        '/quiz': (context) => QuizAttemptPage(), // Define the quiz page route
+        '/homePage': (context) => HomePage(),
+        '/quiz': (context) => QuizAttemptPage(),
+        '/loginStudent': (context) => LoginScreen(),
+        '/loginTeacher': (context) => LoginScreenTeacher(),
       },
-      home: SplashScreen(), // Set the initial route to HomePage
+      home: SplashScreen(),
     );
   }
 }
