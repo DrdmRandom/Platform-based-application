@@ -5,10 +5,10 @@ import '../Pages/assignmentPage.dart'; // Adjust import path according to your p
 class QuizAssignmentListHome extends StatelessWidget {
   // List Map berisi Quiz dan Assignment
   final List<Map<String, String>> quizAssignmentList = [
-    {"title": "Quiz 1", "course": "Rekayasa Perangkat Lunak", "type": "quiz"},
-    {"title": "Assignment 1", "course": "Rekayasa Perangkat Lunak", "type": "assignment"},
-    {"title": "Quiz 3", "course": "Rekayasa Perangkat Lunak", "type": "quiz"},
-    {"title": "Assignment 4", "course": "Rekayasa Perangkat Lunak", "type": "assignment"},
+    {"title": "Quiz 3", "course": "Matematika", "type": "quiz"},
+    {"title": "Assignment 4", "course": "Ilmu Pengetahuan Sejarah (IPS)", "type": "assignment"},
+    {"title": "Quiz 4", "course": "Matematika", "type": "quiz"},
+    {"title": "Assignment 3", "course": "Ilmu Pengetahuan Sejarah (IPS)", "type": "assignment"},
   ];
 
   @override
