@@ -14,71 +14,259 @@ class _GradePageState extends State<GradePage> {
   final Map<String, List<Map<String, dynamic>>> gradeData = {
     "Tahun 1": [
       {
-        "course": "PPL",
-        "quizzes": [
-          {"name": "Quiz 1", "score": "A"},
-          {"name": "Quiz 2", "score": "A"},
+        "course": "Matematika",
+        "Term": [
+          {"name": "1", "score": "A"},
+          {"name": "2", "score": "AB"},
+          {"name": "3", "score": "BC"},
+          {"name": "4", "score": "AB"},
         ],
-        "assignments": [
-          {"name": "Assignment 1", "score": "A"},
-          {"name": "Assignment 2", "score": "A"},
-        ],
-      },
-      {
-        "course": "Alpro",
-        "quizzes": [
-          {"name": "Quiz 1", "score": "A"},
-          {"name": "Quiz 2", "score": "A"},
-        ],
-        "assignments": [
-          {"name": "Assignment 1", "score": "A"},
-          {"name": "Assignment 2", "score": "A"},
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "AB"},
+          {"name": "Akhir Semester", "score": "B"},
         ],
       },
       {
-        "course": "Matematika Diskrit",
-        "quizzes": [
-          {"name": "Quiz 1", "score": "A"},
-          {"name": "Quiz 2", "score": "A"},
+        "course": "Ilmu pengetahuan alam (IPA)",
+        "Term": [
+          {"name": "1", "score": "C"},
+          {"name": "2", "score": "B"},
+          {"name": "3", "score": "A"},
+          {"name": "4", "score": "C"},
         ],
-        "assignments": [
-          {"name": "Assignment 1", "score": "A"},
-          {"name": "Assignment 2", "score": "A"},
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "BC"},
+          {"name": "Akhir Semester", "score": "B"},
+        ],
+      },
+      {
+        "course": "Ilmu pengetahuan Sejarah (IPS)",
+        "Term": [
+          {"name": "1", "score": "CD"},
+          {"name": "2", "score": "CD"},
+          {"name": "3", "score": "C"},
+          {"name": "4", "score": "AB"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "CD"},
+          {"name": "Akhir Semester", "score": "B"},
+        ],
+      },
+      {
+        "course": "Inggris",
+        "Term": [
+          {"name": "1", "score": "B"},
+          {"name": "2", "score": "B"},
+          {"name": "3", "score": "A"},
+          {"name": "4", "score": "B"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "B"},
+          {"name": "Akhir Semester", "score": "AB"},
+        ],
+      },
+      {
+        "course": "Olah Raga",
+        "Term": [
+          {"name": "1", "score": "A"},
+          {"name": "2", "score": "A"},
+          {"name": "3", "score": "A"},
+          {"name": "4", "score": "A"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "A"},
+          {"name": "Akhir Semester", "score": "A"},
+        ],
+      },
+      {
+        "course": "Fisika",
+        "Term": [
+          {"name": "1", "score": "AB"},
+          {"name": "2", "score": "B"},
+          {"name": "3", "score": "A"},
+          {"name": "4", "score": "A"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "AB"},
+          {"name": "Akhir Semester", "score": "A"},
+        ],
+      },
+      {
+        "course": "Seni Rupa",
+        "Term": [
+          {"name": "1", "score": "A"},
+          {"name": "2", "score": "A"},
+          {"name": "3", "score": "A"},
+          {"name": "4", "score": "A"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "A"},
+          {"name": "Akhir Semester", "score": "B"},
         ],
       },
     ],
     "Tahun 2": [
       {
-        "course": "RPL",
-        "quizzes": [
-          {"name": "Quiz 1", "score": "A"},
-          {"name": "Quiz 2", "score": "A"},
+        "course": "Matematika",
+        "Term": [
+          {"name": "1", "score": "AB"},
+          {"name": "2", "score": "B"},
+          {"name": "3", "score": "B"},
+          {"name": "4", "score": "A"},
         ],
-        "assignments": [
-          {"name": "Assignment 1", "score": "A"},
-          {"name": "Assignment 2", "score": "A"},
-        ],
-      },
-      {
-        "course": "Logmat",
-        "quizzes": [
-          {"name": "Quiz 1", "score": "A"},
-          {"name": "Quiz 2", "score": "A"},
-        ],
-        "assignments": [
-          {"name": "Assignment 1", "score": "A"},
-          {"name": "Assignment 2", "score": "A"},
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "B"},
+          {"name": "Akhir Semester", "score": "AB"},
         ],
       },
       {
-        "course": "AKA",
-        "quizzes": [
-          {"name": "Quiz 1", "score": "A"},
-          {"name": "Quiz 2", "score": "A"},
+        "course": "Ilmu pengetahuan alam (IPA)",
+        "Term": [
+          {"name": "1", "score": "BC"},
+          {"name": "2", "score": "B"},
+          {"name": "3", "score": "B"},
+          {"name": "4", "score": "BC"},
         ],
-        "assignments": [
-          {"name": "Assignment 1", "score": "A"},
-          {"name": "Assignment 2", "score": "A"},
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "BC"},
+          {"name": "Akhir Semester", "score": "BC"},
+        ],
+      },
+      {
+        "course": "Ilmu pengetahuan Sejarah (IPS)",
+        "Term": [
+          {"name": "1", "score": "BC"},
+          {"name": "2", "score": "BC"},
+          {"name": "3", "score": "A"},
+          {"name": "4", "score": "D"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "BC"},
+          {"name": "Akhir Semester", "score": "B"},
+        ],
+      },
+      {
+        "course": "Inggris",
+        "Term": [
+          {"name": "1", "score": "AB"},
+          {"name": "2", "score": "B"},
+          {"name": "3", "score": "A"},
+          {"name": "4", "score": "D"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "AB"},
+          {"name": "Akhir Semester", "score": "B"},
+        ],
+      },
+      {
+        "course": "Olah Raga",
+        "Term": [
+          {"name": "1", "score": "A"},
+          {"name": "2", "score": "A"},
+          {"name": "3", "score": "A"},
+          {"name": "4", "score": "A"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "A"},
+          {"name": "Akhir Semester", "score": "A"},
+        ],
+      },
+      {
+        "course": "Fisika",
+        "Term": [
+          {"name": "1", "score": "AB"},
+          {"name": "2", "score": "B"},
+          {"name": "3", "score": "A"},
+          {"name": "4", "score": "A"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "AB"},
+          {"name": "Akhir Semester", "score": "A"},
+        ],
+      },
+      {
+        "course": "Seni Rupa",
+        "Term": [
+          {"name": "1", "score": "A"},
+          {"name": "2", "score": "A"},
+          {"name": "3", "score": "A"},
+          {"name": "4", "score": "A"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "A"},
+          {"name": "Akhir Semester", "score": "B"},
+        ],
+      },
+    ],
+    "Tahun 3": [
+      {
+        "course": "Matematika",
+        "Term": [
+          {"name": "1", "score": "AB"},
+          {"name": "2", "score": "B"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "B"},
+        ],
+      },
+      {
+        "course": "Ilmu pengetahuan alam (IPA)",
+        "Term": [
+          {"name": "1", "score": "BC"},
+          {"name": "2", "score": "B"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "B"},
+        ],
+      },
+      {
+        "course": "Ilmu pengetahuan Sejarah (IPS)",
+        "Term": [
+          {"name": "1", "score": "C"},
+          {"name": "2", "score": "B"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "BC"},
+        ],
+      },
+      {
+        "course": "Inggris",
+        "Term": [
+          {"name": "1", "score": "AB"},
+          {"name": "2", "score": "B"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "AB"},
+        ],
+      },
+      {
+        "course": "Olah Raga",
+        "Term": [
+          {"name": "1", "score": "A"},
+          {"name": "2", "score": "A"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "A"},
+        ],
+      },
+      {
+        "course": "Fisika",
+        "Term": [
+          {"name": "1", "score": "AB"},
+          {"name": "2", "score": "B"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "AB"},
+        ],
+      },
+      {
+        "course": "Seni Rupa",
+        "Term": [
+          {"name": "1", "score": "A"},
+          {"name": "2", "score": "A"},
+        ],
+        "Ujian": [
+          {"name": "Tengah Semester", "score": "A"},
         ],
       },
     ],
@@ -139,7 +327,7 @@ class _GradePageState extends State<GradePage> {
                           selectedYear = newValue!;
                         });
                       },
-                      items: <String>['Tahun 1', 'Tahun 2']
+                      items: <String>['Tahun 1', 'Tahun 2', 'Tahun 3']
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
@@ -172,34 +360,32 @@ class _GradePageState extends State<GradePage> {
                         style: TextStyle(color: Colors.white),
                       ),
                       children: <Widget>[
-                        if (course.containsKey('quizzes'))
-                          ...course['quizzes'].map<Widget>((quiz) {
-                            return ListTile(
-                              tileColor: Colors.white,
-                              title: Text(
-                                quiz['name'],
-                                style: TextStyle(color: Colors.blue),
-                              ),
-                              trailing: Text(
-                                "${quiz['score']}",
-                                style: TextStyle(color: Colors.blue),
-                              ),
-                            );
-                          }).toList(),
-                        if (course.containsKey('assignments'))
-                          ...course['assignments'].map<Widget>((assignment) {
-                            return ListTile(
-                              tileColor: Colors.white,
-                              title: Text(
-                                assignment['name'],
-                                style: TextStyle(color: Colors.blue),
-                              ),
-                              trailing: Text(
-                                "${assignment['score']}",
-                                style: TextStyle(color: Colors.blue),
-                              ),
-                            );
-                          }).toList(),
+                        ...course['Term'].map<Widget>((term) {
+                          return ListTile(
+                            tileColor: Colors.white,
+                            title: Text(
+                              "Term ${term['name']}",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            trailing: Text(
+                              "${term['score']}",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          );
+                        }).toList(),
+                        ...course['Ujian'].map<Widget>((exam) {
+                          return ListTile(
+                            tileColor: Colors.white,
+                            title: Text(
+                              "${exam['name']}",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            trailing: Text(
+                              "${exam['score']}",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          );
+                        }).toList(),
                       ],
                     ),
                   ),
