@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart';
-import '../Components/bottomNavbar.dart' as bottomnavbar;
+import '../Components/bottomNavBar.dart' as bottomnavbar;
 
 //nanti diapus yo
 void main() {

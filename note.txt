@@ -1,0 +1,8 @@
+List Mr.Random To Do List
+# perbaikin system status schedule card
+\/ membuat backend quiz student
+# membuat backend quiz teacher
+# membuat back end grading student (!)
+# membuat backend grading teacher
+# membuat backend report book student
+# membuat backend report book teacher

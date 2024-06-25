@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../Components/headerBar.dart';
-import 'package:radio_group_v2/radio_group_v2.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
+import '../Components/headerBar.dart';
+import '../controllers/quizController.dart';
 
 class QuizAttemptPage extends StatefulWidget {
   @override
@@ -9,7 +9,6 @@ class QuizAttemptPage extends StatefulWidget {
 }
 
 class _QuizAttemptPageState extends State<QuizAttemptPage> {
-  // List of questions with their options
   final List<Map<String, dynamic>> questions = [
     {
       "question": "Siapakah husbu pertamanya ren ?",
@@ -23,17 +22,70 @@ class _QuizAttemptPageState extends State<QuizAttemptPage> {
       "question": "Pada hari apa berlangsungnya off topic ?",
       "options": ["a. senin", "b. selasa", "c. rabu", "d. kamis"],
     },
-    // Add more questions here
+    {
+      "question": "Berapakah hasil dari 7 + 8 ?",
+      "options": ["a. 14", "b. 15", "c. 16", "d. 17"],
+    },
+    {
+      "question": "Jika x = 5, berapakah hasil dari 3x + 2 ?",
+      "options": ["a. 15", "b. 16", "c. 17", "d. 18"],
+    },
+    {
+      "question": "Berapakah hasil dari 12 x 3 ?",
+      "options": ["a. 36", "b. 35", "c. 34", "d. 33"],
+    },
+    {
+      "question": "Sebuah persegi memiliki sisi sepanjang 4 cm. Berapakah luasnya?",
+      "options": ["a. 12 cm²", "b. 14 cm²", "c. 16 cm²", "d. 18 cm²"],
+    },
+    {
+      "question": "Jika y = 3 dan z = 4, berapakah hasil dari y² + z² ?",
+      "options": ["a. 24", "b. 25", "c. 26", "d. 27"],
+    },
+    {
+      "question": "Berapakah hasil dari 100 / 4 ?",
+      "options": ["a. 20", "b. 25", "c. 30", "d. 35"],
+    },
+    {
+      "question": "Sebuah lingkaran memiliki jari-jari sepanjang 7 cm. Berapakah kelilingnya? (π = 22/7)",
+      "options": ["a. 38 cm", "b. 42 cm", "c. 44 cm", "d. 46 cm"],
+    },
+    {
+      "question": "Jika a = 8 dan b = 6, berapakah hasil dari a² - b² ?",
+      "options": ["a. 12", "b. 18", "c. 28", "d. 36"],
+    },
+    {
+      "question": "Berapakah hasil dari 9 x 9 ?",
+      "options": ["a. 80", "b. 81", "c. 82", "d. 83"],
+    },
   ];
 
-  // Radio group controller
-  late RadioGroupController<String> radioGroupController;
+  final List<String> correctAnswers = [
+    "c. chuuya",
+    "c. rabu",
+    "c. rabu",
+    "d. 17",
+    "c. 17",
+    "a. 36",
+    "c. 16 cm²",
+    "b. 25",
+    "b. 25",
+    "c. 44 cm",
+    "c. 28",
+    "b. 81"
+  ];
+
+  List<String> userAnswers = List.filled(12, '');
+
+  late QuizController quizController;
 
   @override
   void initState() {
     super.initState();
-    // Always initialize radio group controller
-    radioGroupController = RadioGroupController();
+    quizController = QuizController(
+      questions: questions,
+      correctAnswers: correctAnswers,
+    );
   }
 
   @override
@@ -71,10 +123,9 @@ class _QuizAttemptPageState extends State<QuizAttemptPage> {
                     TimerCountdown(
                       format: CountDownTimerFormat.hoursMinutesSeconds,
                       endTime: DateTime.now().add(Duration(
-                          minutes:
-                              10)), // Set the countdown duration to 10 minutes
+                          minutes: 10)), // Set the countdown duration to 10 minutes
                       onEnd: () {
-                        print("Timer finished");
+                        _finishQuiz();
                       },
                     ),
                   ],
@@ -86,6 +137,7 @@ class _QuizAttemptPageState extends State<QuizAttemptPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: questions.map((question) {
+                    int questionIndex = questions.indexOf(question);
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Card(
@@ -100,7 +152,7 @@ class _QuizAttemptPageState extends State<QuizAttemptPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Question ${questions.indexOf(question) + 1}",
+                                "Question ${questionIndex + 1}",
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -116,9 +168,20 @@ class _QuizAttemptPageState extends State<QuizAttemptPage> {
                                 ),
                               ),
                               SizedBox(height: 16),
-                              RadioGroup<String>(
-                                controller: radioGroupController,
-                                values: question["options"] as List<String>,
+                              Column(
+                                children: (question["options"] as List<String>).map((option) {
+                                  return RadioListTile<String>(
+                                    title: Text(option),
+                                    value: option,
+                                    groupValue: userAnswers[questionIndex],
+                                    onChanged: (value) {
+                                      setState(() {
+                                        userAnswers[questionIndex] = value!;
+                                        quizController.setUserAnswer(questionIndex, value);
+                                      });
+                                    },
+                                  );
+                                }).toList(),
                               ),
                             ],
                           ),
@@ -141,14 +204,15 @@ class _QuizAttemptPageState extends State<QuizAttemptPage> {
                         actions: [
                           TextButton(
                             onPressed: () {
-                              Navigator.of(context).pop(); // Close the dialog
+                              Navigator.of(context).pop();
                             },
                             child: Text("Back to Quiz"),
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              // Add your finish quiz logic here
-                              Navigator.of(context).pop(); // Close the dialog
+                              int score = quizController.calculateScore();
+                              Navigator.of(context).pop();
+                              _showScoreDialog(score);
                             },
                             child: Text("Finish"),
                           ),
@@ -164,5 +228,31 @@ class _QuizAttemptPageState extends State<QuizAttemptPage> {
         ),
       ),
     );
+  }
+
+  void _showScoreDialog(int score) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Quiz Completed"),
+          content: Text("Your score is $score/${questions.length}"),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushNamedAndRemoveUntil('/homePage', (Route<dynamic> route) => false);
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _finishQuiz() {
+    int score = quizController.calculateScore();
+    _showScoreDialog(score);
   }
 }
