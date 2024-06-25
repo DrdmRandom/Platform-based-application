@@ -15,6 +15,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ChatPage()),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProfilePage()),
+        );
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: Column(
                             children: [
-                              Icon(Icons.calendar_today_outlined,size: 60,color: Color.fromRGBO(90, 158, 183, 1)),
+                              Icon(Icons.calendar_today_outlined, size: 60, color: Color.fromRGBO(90, 158, 183, 1)),
                               Text("Attendance"),
                             ],
                           ),
@@ -63,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: Column(
                             children: [
-                              Icon(Icons.grade_outlined,size: 60,color: Color.fromRGBO(90, 158, 183, 1)),
+                              Icon(Icons.grade_outlined, size: 60, color: Color.fromRGBO(90, 158, 183, 1)),
                               Text("Grade"),
                             ],
                           ),
@@ -78,12 +107,11 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: Column(
                             children: [
-                              Icon(Icons.book_outlined,size: 60,color: Color.fromRGBO(90, 158, 183, 1)),
+                              Icon(Icons.book_outlined, size: 60, color: Color.fromRGBO(90, 158, 183, 1)),
                               Text("Report"),
                             ],
                           ),
                         ),
-
                       ],
                     ),
                     ScheduleWidget(),
@@ -96,6 +124,24 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }
