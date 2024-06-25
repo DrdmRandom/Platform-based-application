@@ -3,15 +3,16 @@ import '../Components/bottomNavBarTeacher.dart';
 import '../Components/headerBarTeacher.dart'; // Import your headerBar.dart file
 import '../Pages/homePageTeacher.dart';
 import '../Pages/profilePageTeacher.dart';
+import 'messagePageTeacher.dart';
 
 class TeacherChatPage extends StatelessWidget {
   final List<String> people = [
-    'John Doe',
-    'Jane Smith',
-    'Michael Johnson',
-    'Emily Brown',
-    'David Wilson',
-    'Sarah Lee',
+    'Mr. John Doe',
+    'Mr. Jane Smith',
+    'Michael Johnson (02-A)',
+    'Emily Brown (02-B)',
+    'David Wilson (02-A)',
+    'Sarah Lee (02-B)',
   ];
 
   @override
@@ -29,8 +30,7 @@ class TeacherChatPage extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBarTeacher(), // Add BottomNavigationBarTeacher
+      ), // Add BottomNavigationBarTeacher
     );
   }
 
@@ -43,6 +43,14 @@ class TeacherChatPage extends StatelessWidget {
       color: Colors.white, // Set card color to white
       margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MessagePageTeacher(personName: name),
+            ),
+          );
+        },
         child: Padding(
           padding: EdgeInsets.all(12.0),
           child: Row(

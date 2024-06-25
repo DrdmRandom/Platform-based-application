@@ -3,6 +3,7 @@ import '../Components/headerBar.dart';
 import 'package:radio_group_v2/radio_group_v2.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 
+
 class QuizAttemptPage extends StatefulWidget {
   @override
   _QuizAttemptPageState createState() => _QuizAttemptPageState();
@@ -148,6 +149,7 @@ class _QuizAttemptPageState extends State<QuizAttemptPage> {
                           ElevatedButton(
                             onPressed: () {
                               // Add your finish quiz logic here
+
                               Navigator.of(context).pop(); // Close the dialog
                             },
                             child: Text("Finish"),

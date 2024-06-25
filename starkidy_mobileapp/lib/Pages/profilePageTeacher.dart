@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../Components/headerBar.dart'; // Assuming this is defined in headerBar.dart
 import '../Components/headerBarTeacher.dart' as bottomnavbar;
+import '../Components/headerBarTeacher.dart';
 import '../Pages/homePage.dart';
 import '../Pages/chatPage.dart';
 
@@ -10,7 +10,7 @@ class TeacherProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(135),
-        child: HeaderBar(),
+        child: HeaderBarTeacher(),
       ),
       body: TeacherProfileBody(), // Custom profile body widget
     );
@@ -42,7 +42,7 @@ class TeacherProfileBody extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '02-A',
+                    'Rekayasa Perangkat Lunak Lecture',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],

@@ -5,12 +5,12 @@ import 'messagePage.dart'; // Import your messagePage.dart file
 
 class ChatPage extends StatelessWidget {
   final List<String> people = [
-    'John Doe',
-    'Jane Smith',
-    'Michael Johnson',
-    'Emily Brown',
-    'David Wilson',
-    'Sarah Lee',
+    'John Doe (02-A)',
+    'Jane Smith (02-B)',
+    'Michael Johnson (02-A)',
+    'Emily Brown (02-B)',
+    'David Wilson (02-B)',
+    'Sarah Lee (02-A)',
   ];
 
   @override

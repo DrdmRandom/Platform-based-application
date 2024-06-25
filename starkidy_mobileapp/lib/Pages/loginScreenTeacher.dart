@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starkidy_mobileapp/Components/textField.dart';
 import 'package:starkidy_mobileapp/Components/button.dart';
-import '../Components/bottomNavBar.dart' as bottomNavBar;
+import '../Components/bottomNavBarTeacher.dart';
 import 'homePageTeacher.dart';
 
 class LoginScreenTeacher extends StatelessWidget {
@@ -11,14 +11,13 @@ class LoginScreenTeacher extends StatelessWidget {
   final emailAddressController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign user in method
   void signUserIn(BuildContext context) {
     // You can perform any authentication logic here
 
     // Navigate to BottomNavigationBar
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => HomePageTeacher()),
+      MaterialPageRoute(builder: (context) => BottomNavigationBarTeacher()),
     );
   }
 
