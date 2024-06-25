@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart'; // Ensure this path is correct
-
+import '../Components/bottomNavBarTeacher.dart' as bottomnavbar;
 
 class GradeScreen extends StatefulWidget {
   @override
@@ -94,47 +94,50 @@ class _GradeScreenState extends State<GradeScreen> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: studentData[selectedStudent]!.length,
+              itemCount: studentData[selectedStudent]!.length + 1,
               itemBuilder: (context, index) {
-                final course = studentData[selectedStudent]![index];
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Card(
-                    color: Color.fromRGBO(90, 158, 183, 1),
-                    child: ListTile(
-                      title: Text(
-                        course['course']!,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      trailing: Text(
-                        course['grade']!,
-                        style: TextStyle(color: Colors.white),
+                if (index == studentData[selectedStudent]!.length) {
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            // Add your edit button functionality here
+                          },
+                          child: Text('Edit', style: TextStyle(color: Colors.blue)),
+                        ),
+                        SizedBox(width: 8.0),
+                        TextButton(
+                          onPressed: () {
+                            // Add your input button functionality here
+                          },
+                          child: Text('Input', style: TextStyle(color: Colors.blue)),
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  final course = studentData[selectedStudent]![index];
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      color: Color.fromRGBO(90, 158, 183, 1),
+                      child: ListTile(
+                        title: Text(
+                          course['course']!,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        trailing: Text(
+                          course['grade']!,
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
-                  ),
-                );
+                  );
+                }
               },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    // Add your edit button functionality here
-                  },
-                  child: Text('Edit', style: TextStyle(color: Colors.blue)),
-                ),
-                SizedBox(width: 8.0),
-                TextButton(
-                  onPressed: () {
-                    // Add your input button functionality here
-                  },
-                  child: Text('Input', style: TextStyle(color: Colors.blue)),
-                ),
-              ],
             ),
           ),
         ],

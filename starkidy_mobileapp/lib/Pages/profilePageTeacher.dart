@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import '../Components/headerBar.dart'; // Assuming this is defined in headerBar.dart
+import '../Components/headerBarTeacher.dart' as bottomnavbar;
+import '../Components/headerBarTeacher.dart';
 import '../Pages/homePage.dart';
 import '../Pages/chatPage.dart';
 
-class ProfilePage extends StatelessWidget {
+class TeacherProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(135),
-        child: HeaderBar(),
+        child: HeaderBarTeacher(),
       ),
-      body: ProfileBody(), // Custom profile body widget
+      body: TeacherProfileBody(), // Custom profile body widget
     );
   }
 }
 
-class ProfileBody extends StatelessWidget {
+class TeacherProfileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,12 +37,12 @@ class ProfileBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'User',
+                    'Teacher Name',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 5),
                   Text(
-                    '02-A',
+                    'Rekayasa Perangkat Lunak Lecture',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -52,7 +53,7 @@ class ProfileBody extends StatelessWidget {
         Divider(height: 1, color: Colors.grey),
         ListTile(
           leading: Icon(Icons.email),
-          title: Text('User@example.com'),
+          title: Text('teacher@example.com'),
           onTap: () {
             // Handle tapping the email
           },
@@ -68,7 +69,7 @@ class ProfileBody extends StatelessWidget {
         Divider(height: 1, color: Colors.grey),
         ListTile(
           leading: Icon(Icons.location_on),
-          title: Text('Bojongsoang, Bandung'),
+          title: Text('New York, USA'),
           onTap: () {
             // Handle tapping the location
           },

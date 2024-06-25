@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:starkidy_mobileapp/components/textField.dart';
 import 'package:starkidy_mobileapp/components/button.dart';
 import 'package:starkidy_mobileapp/controllers/login_Controller.dart';
+import '../Components/bottomNavBar.dart' as bottomnavbar;
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -11,6 +12,16 @@ class LoginScreen extends StatelessWidget {
   final passwordController = TextEditingController();
 
   final LoginController _loginController = LoginController();
+
+  void signUserIn(BuildContext context) {
+    // You can perform any authentication logic here
+
+    // Navigate to BottomNavigationBar
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => bottomnavbar.BottomNavigationBar()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

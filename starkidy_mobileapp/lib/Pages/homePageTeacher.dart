@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBarTeacher.dart';
-import '../Components/bottomNavBar.dart' as bottomnavbar;
+import '../Components/bottomNavbar.dart' as bottomnavbar;
 import '../Pages/chatPage.dart';
 import '../Pages/profilePage.dart';
 import '../Components/quizAssignmentHomeWidgetTeacher.dart';
