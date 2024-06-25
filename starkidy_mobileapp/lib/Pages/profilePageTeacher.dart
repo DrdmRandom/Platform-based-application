@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../Components/headerBarTeacher.dart' as bottomnavbar;
 import '../Components/headerBarTeacher.dart';
 import '../Pages/homePage.dart';
 import '../Pages/chatPage.dart';

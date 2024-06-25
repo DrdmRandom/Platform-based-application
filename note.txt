@@ -4,9 +4,10 @@ List Mr.Random To Do List
 \/ membuat backend quiz student
 # membuat backend quiz teacher
 \/ membuat back end grading student
-# membuat backend grading teacher
+\/ membuat backend grading teacher
 \/ membuat backend report book student
 # membuat backend report book teacher
+# Membuat beckedn Attendance Tacher
 
 Berikut adalah parameter nilai beserta rentang nilai untuk setiap kategori:
 

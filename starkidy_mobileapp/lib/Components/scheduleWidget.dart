@@ -89,7 +89,7 @@ class ScheduleWidget extends StatelessWidget {
       case "Sedang Berlangsung":
         return Colors.blue;
       case "Selesai":
-        return Colors.red;
+        return Colors.grey;
       default:
         return Colors.black;
     }

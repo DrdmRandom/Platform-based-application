@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Components/headerBar.dart';
 import '../Components/bottomNavBarTeacher.dart' as bottomnavbar;
+import '../Components/headerBarTeacher.dart';
 
 class AttendanceScreen extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class AttendanceScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(135),
-        child: HeaderBar(),
+        child: HeaderBarTeacher (),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

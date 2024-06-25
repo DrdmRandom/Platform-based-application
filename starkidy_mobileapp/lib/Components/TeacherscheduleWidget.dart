@@ -34,10 +34,10 @@ class TeacherScheduleWidgTeacheretController extends ChangeNotifier {
   final Map<int, List<ClassSchedule>> weeklySchedule = {
     1: [ // Monday
       ClassSchedule(mataKuliah: "Matematika", waktu: "08:00-09:30", ruangan: "Gedung A - 0101", Kelas: "Kelas 07-03"),
-      ClassSchedule(mataKuliah: "Fisika", waktu: "12:00-13:30", ruangan: "Gedung C - 0103", Kelas: "Kelas 07-01")
+      ClassSchedule(mataKuliah: "Fisika", waktu: "12:00-13:30", ruangan: "Gedung C - 0103", Kelas: "Kelas 07-03")
     ],
     2: [ // Tuesday
-      ClassSchedule(mataKuliah: "Matematika", waktu: "12:00-13:30", ruangan: "Kolam Renang - 0001",Kelas: "Kelas 09-02"),
+      ClassSchedule(mataKuliah: "Matematika", waktu: "12:00-13:30", ruangan: "Gedung B - 0101",Kelas: "Kelas 09-02"),
     ],
     3: [ // Wednesday
       ClassSchedule(mataKuliah: "Matematika", waktu: "08:00-09:30", ruangan: "Gedung A - 0101", Kelas: "Kelas 08-01"),
@@ -45,7 +45,7 @@ class TeacherScheduleWidgTeacheretController extends ChangeNotifier {
       ClassSchedule(mataKuliah: "Fisika", waktu: "12:00-13:30", ruangan: "Gedung A - 0105", Kelas: "Kelas 08-01"),
     ],
     4: [ // Thursday
-      ClassSchedule(mataKuliah: "Fisika", waktu: "08:00-09:30", ruangan: "Gym - 0401", Kelas: 'Kelas 08-03'),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "08:00-09:30", ruangan: "Gedung F - 0401", Kelas: 'Kelas 08-03'),
       ClassSchedule(mataKuliah: "Matematika", waktu: "10:00-11:30", ruangan: "Gedung A - 0201", Kelas: 'Kelas 09-02'),
       ClassSchedule(mataKuliah: "Fisika", waktu: "12:00-13:30", ruangan: "Gedung A - 0102", Kelas: 'Kelas 07-01'),
     ],
@@ -86,7 +86,7 @@ class TeacherScheduleWidget extends StatelessWidget {
       case "Sedang Berlangsung":
         return Colors.blue;
       case "Selesai":
-        return Colors.red;
+        return Colors.grey;
       default:
         return Colors.black;
     }
