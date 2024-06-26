@@ -10,6 +10,8 @@ Tyas Nur Kumala (1301213030)
 
 M. Alam Rasyidu Putra (1301213535)
 
+
+
 Mobile
 
 FE = Dinanti 
@@ -17,6 +19,8 @@ FE = Dinanti
 BE = Dawwi
 
 FrameWork = Android studio Flutter SDK
+
+
 
 Website 
 
@@ -26,12 +30,10 @@ BE = Alam
 
 FrameWork = Laravel
 
+
+
 Server
 
 BE = Dawwi
 
 Service = Supabase
-
-
-Our Project 
-LMS for Elementry School
