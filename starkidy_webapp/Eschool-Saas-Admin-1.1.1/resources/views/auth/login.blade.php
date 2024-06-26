@@ -26,7 +26,7 @@
                         @endif
                         <div class="auth-form-light rounded-lg text-left p-5">
                             <div class="brand-logo text-center">
-                                <img src="{{ $systemSettings['login_page_logo'] ?? url('assets/horizontal-logo.svg') }}"
+                                <img src="{{ $systemSettings['login_page_logo'] ?? url('assets/home_page/img/Logo.svg') }}"
                                     alt="logo">
                             </div>
                             <div class="mt-3">
