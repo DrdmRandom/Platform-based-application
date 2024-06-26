@@ -8,31 +8,19 @@ Tyas Nur Kumala (1301213030)
 M. Alam Rasyidu Putra (1301213535)
 
 Mobile
-FE = Dawwi & Dila (XML)
-BE = Dawwi & Dila (Java)
-FrameWork = Android studio
+FE = Dinanti 
+BE = Dawwi
+FrameWork = Android studio Flutter SDK
 
 Website 
-FE =  Tyas (HTML & CSS)
-BE = Alam (PHP)
+FE =  Tyas 
+BE = Alam 
 FrameWork = Laravel
 
 Server
 BE = Dawwi
-(JavaScript, MySQL)
-FrameWork = Firebase & Oracle
+Service = Supabase
 
 
 Our Project 
 LMS for Elementry School
-
-Decs
-We are making an LMS for Elementry School that will provide the basic features needed for teaching purposes that we hope can make the job of the teacher, student, and parent much easier and more centralized 
-
-Specs & Function
-Report Book
-Grading, Attendance
-Time Line Announcement (if possible)
-Quiz and Submission
-Paycheck payment (if possible)
-
