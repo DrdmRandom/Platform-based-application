@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:flutter/material.dart';
-import '../Pages/chatPage.dart';
-import '../Pages/homePage.dart';
-import '../Pages/profilePage.dart';
+import '../Pages/chatPageTeacher.dart';
+import '../Pages/homePageTeacher.dart';
+import '../Pages/profilePageTeacher.dart';
 
-class BottomNavigationBar extends StatefulWidget {
-  const BottomNavigationBar({Key? key}) : super(key: key);
+class BottomNavigationBarTeacher extends StatefulWidget {
+  const BottomNavigationBarTeacher({Key? key}) : super(key: key);
 
   @override
-  State<BottomNavigationBar> createState() => _BottomNavigationBarState();
+  State<BottomNavigationBarTeacher> createState() => _BottomNavigationBarTeacherState();
 }
 
-class _BottomNavigationBarState extends State<BottomNavigationBar> {
+class _BottomNavigationBarTeacherState extends State<BottomNavigationBarTeacher> {
   int pageIndex = 0;
   late PageController pageController;
 
@@ -39,9 +38,9 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
           });
         },
         children: [
-          HomePage(),
-          ChatPage(),
-          ProfilePage(),
+          HomePageTeacher(),
+          TeacherChatPage(),
+          TeacherProfilePage(),
         ],
       ),
       bottomNavigationBar: AnimatedBottomNavigationBar(

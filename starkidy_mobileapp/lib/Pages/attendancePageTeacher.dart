@@ -1,123 +1,115 @@
 import 'package:flutter/material.dart';
-import '../Components/headerBar.dart';
+import 'AttendanceInputPage.dart';
+import '../Components/headerBarTeacher.dart';
 
-void main() {
-  runApp(AttendancePageTeacher());
+class ClassSchedule {
+  final String mataKuliah;
+  final String waktu;
+  final String ruangan;
+  final String kelas;
+
+  ClassSchedule({
+    required this.mataKuliah,
+    required this.waktu,
+    required this.ruangan,
+    required this.kelas,
+  });
 }
 
-class AttendancePageTeacher extends StatelessWidget {
+class AttendancePageTeacher extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Attendance App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: AttendanceScreen(),
-    );
-  }
+  _AttendancePageTeacherState createState() => _AttendancePageTeacherState();
 }
 
-class AttendanceScreen extends StatelessWidget {
+class _AttendancePageTeacherState extends State<AttendancePageTeacher> {
+  final Map<int, List<ClassSchedule>> weeklySchedule = {
+    1: [
+      ClassSchedule(mataKuliah: "Matematika", waktu: "08:00-09:30", ruangan: "Gedung A - 0101", kelas: "Kelas 07-03"),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "12:00-13:30", ruangan: "Gedung C - 0103", kelas: "Kelas 07-03")
+    ],
+    2: [
+      ClassSchedule(mataKuliah: "Matematika", waktu: "12:00-13:30", ruangan: "Gedung B - 0101", kelas: "Kelas 09-02"),
+    ],
+    3: [
+      ClassSchedule(mataKuliah: "Matematika", waktu: "08:00-09:30", ruangan: "Gedung A - 0101", kelas: "Kelas 08-01"),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "10:00-11:30", ruangan: "Gedung B - 0301", kelas: "Kelas 08-02"),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "12:00-13:30", ruangan: "Gedung A - 0105", kelas: "Kelas 08-01"),
+    ],
+    4: [
+      ClassSchedule(mataKuliah: "Fisika", waktu: "08:00-09:30", ruangan: "Gedung F - 0401", kelas: 'Kelas 08-03'),
+      ClassSchedule(mataKuliah: "Matematika", waktu: "10:00-11:30", ruangan: "Gedung A - 0201", kelas: 'Kelas 09-02'),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "12:00-13:30", ruangan: "Gedung A - 0102", kelas: 'Kelas 07-01'),
+    ],
+    5: [
+      ClassSchedule(mataKuliah: "Fisika", waktu: "08:00-09:30", ruangan: "Gedung A - 0301", kelas: 'Kelas 09-02'),
+    ]
+  };
+
+  List<ClassSchedule> todaySchedule = [];
+
+  @override
+  void initState() {
+    super.initState();
+    final int today = DateTime.now().weekday;
+    if (weeklySchedule.containsKey(today)) {
+      setState(() {
+        todaySchedule = weeklySchedule[today]!;
+      });
+    }
+  }
+
+  void _navigateToAttendanceInput(String mataKuliah, String kelas) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AttendanceInputPage(mataKuliah: mataKuliah, kelas: kelas),
+      ),
+    );
+    if (result != null && result) {
+      // Do something if attendance was successfully filled
+      print('Attendance was filled.');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(135),
-        child: HeaderBar(),
+        child: HeaderBarTeacher(),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 10),
-            child: Text(
-              "Attendance",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                color: Colors.black,
+      body: todaySchedule.isNotEmpty
+          ? ListView.builder(
+        itemCount: todaySchedule.length,
+        itemBuilder: (context, index) {
+          final schedule = todaySchedule[index];
+          return Card(
+            color: Color.fromRGBO(90, 158, 183, 1),
+            child: ListTile(
+              title: Text(
+                schedule.mataKuliah,
+                style: TextStyle(color: Colors.white),
+              ),
+              subtitle: Text(
+                '${schedule.waktu} - ${schedule.kelas}',
+                style: TextStyle(color: Colors.white70),
+              ),
+              trailing: ElevatedButton(
+                onPressed: () {
+                  _navigateToAttendanceInput(schedule.mataKuliah, schedule.kelas);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white, // Button color
+                  foregroundColor: Color.fromRGBO(90, 158, 183, 1), // Text color
+                ),
+                child: Text('Fill Attendance'),
               ),
             ),
-          ),
-          Expanded(
-            child: ListView(
-              children: [
-                AttendanceCard(className: 'Kalkulus (03-A)'),
-                AttendanceCard(className: 'Fisika (02-B)'),
-                AttendanceCard(className: 'Rekayasa Perangkat Lunak (01-A)'),
-                AttendanceCard(className: 'Teori Bahasa dan Automata (02-A)'),
-                AttendanceCard(className: 'Jaringan Komputer (01-B)'),
-              ],
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chat',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class AttendanceCard extends StatelessWidget {
-  final String className;
-
-  AttendanceCard({required this.className});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: Color.fromRGBO(90, 158, 183, 1),
-      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-      child: InkWell(
-        onTap: () {
-          // Handle card tap
+          );
         },
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                className,
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ),
-              SizedBox(height: 8.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      // Add your edit button functionality here
-                    },
-                    child: Text('Edit', style: TextStyle(color: Colors.white)),
-                  ),
-                  SizedBox(width: 8.0),
-                  TextButton(
-                    onPressed: () {
-                      // Add your input button functionality here
-                    },
-                    child: Text('Input', style: TextStyle(color: Colors.white)),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+      )
+          : Center(
+        child: Text('No classes scheduled for today'),
       ),
     );
   }

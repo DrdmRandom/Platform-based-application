@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import '../Components/headerBar.dart'; // Import your headerBar.dart file
-import '../Components/bottomNavBar.dart'; // Import your bottomNavBart.dart file
-import 'messagePage.dart'; // Import your messagePage.dart file
+import '../Components/bottomNavBarTeacher.dart';
+import '../Components/headerBarTeacher.dart'; //sss
+import '../Pages/homePageTeacher.dart';
+import '../Pages/profilePageTeacher.dart';
+import 'messagePageTeacher.dart';
 
-class ChatPage extends StatelessWidget {
+class TeacherChatPage extends StatelessWidget {
   final List<String> people = [
-    'John Doe (02-A)',
-    'Jane Smith (02-B)',
+    'Mr. John Doe',
+    'Mr. Jane Smith',
     'Michael Johnson (02-A)',
     'Emily Brown (02-B)',
-    'David Wilson (02-B)',
-    'Sarah Lee (02-A)',
+    'David Wilson (02-A)',
+    'Sarah Lee (02-B)',
   ];
 
   @override
@@ -18,7 +20,7 @@ class ChatPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          HeaderBar(), // Use PascalCase for your custom widget names
+          HeaderBarTeacher(), // Use PascalCase for your custom widget names
           Expanded(
             child: ListView.builder(
               itemCount: people.length,
@@ -28,7 +30,7 @@ class ChatPage extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      ), // Add BottomNavigationBarTeacher
     );
   }
 
@@ -42,11 +44,10 @@ class ChatPage extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: InkWell(
         onTap: () {
-          // Navigate to MessagePage when card is tapped
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MessagePage(personName: name),
+              builder: (context) => MessagePageTeacher(personName: name),
             ),
           );
         },

@@ -5,7 +5,7 @@ class HeaderBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String userName = "User"; // Ganti dengan nama pengguna sesuai kebutuhan
-    String userClass = "02-A"; // Ganti dengan kelas pengguna sesuai kebutuhan
+    String userClass = "Kelas 8"; // Ganti dengan kelas pengguna sesuai kebutuhan
     String greeting = "Hello, $userName!";
     String currentDate = DateFormat('dd/MM/yyyy').format(DateTime.now());
     String currentTime = DateFormat('HH:mm:ss').format(DateTime.now());

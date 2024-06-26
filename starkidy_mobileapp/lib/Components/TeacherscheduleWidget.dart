@@ -4,13 +4,14 @@ class ClassSchedule {
   final String mataKuliah;
   final String waktu;
   final String ruangan;
-  final String kodeGuru;
+  final String Kelas;
+
 
   ClassSchedule({
     required this.mataKuliah,
     required this.waktu,
     required this.ruangan,
-    required this.kodeGuru,
+    required this.Kelas
   });
 
   DateTime getStartTime() {
@@ -26,34 +27,30 @@ class ClassSchedule {
   }
 }
 
-class ScheduleWidgetController extends ChangeNotifier {
+class TeacherScheduleWidgTeacheretController extends ChangeNotifier {
   List<ClassSchedule> schedules = [];
 
   // Weekly schedule data moved into the controller
   final Map<int, List<ClassSchedule>> weeklySchedule = {
     1: [ // Monday
-      ClassSchedule(mataKuliah: "Matematika", waktu: "08:00-09:30", ruangan: "Gedung A - 0101", kodeGuru: "MKH"),
-      ClassSchedule(mataKuliah: "IPA", waktu: "10:00-11:30", ruangan: "Gedung A - 0102", kodeGuru: "DKJ"),
-      ClassSchedule(mataKuliah: "Sejarah", waktu: "12:00-13:30", ruangan: "Gedung A - 0103", kodeGuru: "PRS"),
+      ClassSchedule(mataKuliah: "Matematika", waktu: "08:00-09:30", ruangan: "Gedung A - 0101", Kelas: "Kelas 07-03"),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "12:00-13:30", ruangan: "Gedung C - 0103", Kelas: "Kelas 07-03")
     ],
     2: [ // Tuesday
-      ClassSchedule(mataKuliah: "Inggris", waktu: "08:00-09:30", ruangan: "Gedung A - 0201", kodeGuru: "LTH"),
-      ClassSchedule(mataKuliah: "Sains", waktu: "10:00-11:30", ruangan: "Gedung A - 0202", kodeGuru: "FNC"),
-      ClassSchedule(mataKuliah: "Olah Raga (Berenang)", waktu: "12:00-13:30", ruangan: "Kolam Renang - 0001", kodeGuru: "SWM"),
+      ClassSchedule(mataKuliah: "Matematika", waktu: "12:00-13:30", ruangan: "Gedung B - 0101",Kelas: "Kelas 09-02"),
     ],
     3: [ // Wednesday
-      ClassSchedule(mataKuliah: "Matematika", waktu: "08:00-09:30", ruangan: "Gedung A - 0101", kodeGuru: "MKH"),
-      ClassSchedule(mataKuliah: "Fisika", waktu: "10:00-11:30", ruangan: "Gedung A - 0301", kodeGuru: "NTP"),
-      ClassSchedule(mataKuliah: "Sejarah", waktu: "12:00-13:30", ruangan: "Gedung A - 0103", kodeGuru: "PRS"),
+      ClassSchedule(mataKuliah: "Matematika", waktu: "08:00-09:30", ruangan: "Gedung A - 0101", Kelas: "Kelas 08-01"),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "10:00-11:30", ruangan: "Gedung B - 0301", Kelas: "Kelas 08-02"),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "12:00-13:30", ruangan: "Gedung A - 0105", Kelas: "Kelas 08-01"),
     ],
     4: [ // Thursday
-      ClassSchedule(mataKuliah: "Olahraga", waktu: "08:00-09:30", ruangan: "Gym - 0401", kodeGuru: "GYM"),
-      ClassSchedule(mataKuliah: "Inggris", waktu: "10:00-11:30", ruangan: "Gedung A - 0201", kodeGuru: "LTH"),
-      ClassSchedule(mataKuliah: "IPA", waktu: "12:00-13:30", ruangan: "Gedung A - 0102", kodeGuru: "DKJ"),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "08:00-09:30", ruangan: "Gedung F - 0401", Kelas: 'Kelas 08-03'),
+      ClassSchedule(mataKuliah: "Matematika", waktu: "10:00-11:30", ruangan: "Gedung A - 0201", Kelas: 'Kelas 09-02'),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "12:00-13:30", ruangan: "Gedung A - 0102", Kelas: 'Kelas 07-01'),
     ],
     5: [ // Friday
-      ClassSchedule(mataKuliah: "Fisika", waktu: "08:00-09:30", ruangan: "Gedung A - 0301", kodeGuru: "NTP"),
-      ClassSchedule(mataKuliah: "Seni Rupa", waktu: "10:00-11:30", ruangan: "Art Studio - 0501", kodeGuru: "ART"),
+      ClassSchedule(mataKuliah: "Fisika", waktu: "08:00-09:30", ruangan: "Gedung A - 0301", Kelas: 'Kelas 09-02'),
     ]
   };
 
@@ -63,8 +60,8 @@ class ScheduleWidgetController extends ChangeNotifier {
   }
 }
 
-class ScheduleWidget extends StatelessWidget {
-  final ScheduleWidgetController controller = ScheduleWidgetController();
+class TeacherScheduleWidget extends StatelessWidget {
+  final TeacherScheduleWidgTeacheretController controller = TeacherScheduleWidgTeacheretController();
 
   String getStatus(ClassSchedule schedule) {
     final now = DateTime.now();
@@ -256,7 +253,7 @@ class ScheduleWidget extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      schedule.kodeGuru,
+                                      schedule.Kelas,
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
@@ -285,7 +282,7 @@ class ScheduleWidget extends StatelessWidget {
 void main() {
   runApp(MaterialApp(
     home: Scaffold(
-      body: ScheduleWidget(),
+      body: TeacherScheduleWidget(),
     ),
   ));
 }

@@ -1,0 +1,54 @@
+List Mr.Random To Do List
+\/ tacher shcedule card
+\/ perbaikin system status schedule card
+\/ membuat backend quiz student
+# membuat backend quiz teacher
+\/ membuat back end grading student
+\/ membuat backend grading teacher
+\/ membuat backend report book student
+# membuat backend report book teacher
+\/ Membuat beckedn Attendance Tacher
+
+Berikut adalah parameter nilai beserta rentang nilai untuk setiap kategori:
+
+A: 90 - 100
+B: 80 - 89
+C: 70 - 79
+D: 60 - 69
+E: 50 - 59
+F: 0 - 49
+Penjelasan:
+
+Nilai A diberikan untuk rentang nilai dari 90 hingga 100.
+Nilai B diberikan untuk rentang nilai dari 80 hingga 89.
+Nilai C diberikan untuk rentang nilai dari 70 hingga 79.
+Nilai D diberikan untuk rentang nilai dari 60 hingga 69.
+Nilai E diberikan untuk rentang nilai dari 50 hingga 59.
+Nilai F diberikan untuk rentang nilai dari 0 hingga 49.
+Rentang nilai ini biasanya digunakan untuk mengevaluasi kinerja akademik siswa.
+
+
+Here are the subjects from the schedule:
+
+Matematika
+IPA
+Sejarah
+Inggris
+Sains
+Olah Raga (Berenang)
+Fisika
+Olahraga
+Seni Rupa
+
+A
+AB
+B
+BC
+C
+CD
+D
+
+
+
+
+
