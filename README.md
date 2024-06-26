@@ -1,5 +1,5 @@
 # Platform-based-application
-This is our college final semester Task from the Platform-based application course As a Telkom University student. we are making LMS for Elementary school for our final project.
+This is our college final semester Task from the Platform-based application course As a Telkom University student. we are making LMS for school for our final project.
 
 Member
 Dawwi Raissa Damarjati Muljana (13012135)
