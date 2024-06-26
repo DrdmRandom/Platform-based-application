@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:starkidy_mobileapp/Pages/splashScreen.dart';
 import 'package:starkidy_mobileapp/Pages/homePage.dart';
 import 'package:starkidy_mobileapp/Pages/quizAttemptPage.dart';
-
-import 'Pages/loginScreen.dart';
-import 'Pages/loginScreenTeacher.dart';
+import 'package:starkidy_mobileapp/Pages/loginScreen.dart';
+import 'package:starkidy_mobileapp/Pages/loginScreenTeacher.dart';
+import 'package:starkidy_mobileapp/Pages/reportBookTeacher.dart'; // Import TeacherReportBookPage
+import 'package:starkidy_mobileapp/Pages/reportBook.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
         '/quiz': (context) => QuizAttemptPage(),
         '/loginStudent': (context) => LoginScreen(),
         '/loginTeacher': (context) => LoginScreenTeacher(),
+        '/teacherReportBook': (context) => TeacherReportBook(),
+        '/studentReportBook': (context) => StudentReportBook(),
       },
       home: SplashScreen(),
     );

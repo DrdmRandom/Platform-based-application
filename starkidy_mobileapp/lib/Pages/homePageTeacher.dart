@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starkidy_mobileapp/Pages/reportBookTeacher.dart';
 import '../Components/TeacherscheduleWidget.dart';
 import '../Components/headerBarTeacher.dart';
 import '../Pages/chatPage.dart';
@@ -7,6 +8,7 @@ import '../Components/quizAssignmentHomeWidgetTeacher.dart';
 import '../Components/ScheduleWidget.dart';
 import 'attendancePageTeacher.dart';
 import 'gradePageTeacher.dart';
+import '../Pages/reportBook.dart'; // Import the TeacherReportBookPage
 
 class HomePageTeacher extends StatefulWidget {
   @override
@@ -109,11 +111,19 @@ class HomeContent extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Column(
-                      children: [
-                        Icon(Icons.book_outlined, size: 60, color: Color.fromRGBO(90, 158, 183, 1)),
-                        Text("Report"),
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => TeacherReportBook()), // Navigate to TeacherReportBookPage
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          Icon(Icons.book_outlined, size: 60, color: Color.fromRGBO(90, 158, 183, 1)),
+                          Text("Report"),
+                        ],
+                      ),
                     ),
                   ],
                 ),

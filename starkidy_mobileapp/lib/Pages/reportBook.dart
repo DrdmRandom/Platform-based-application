@@ -1,104 +1,74 @@
 import 'package:flutter/material.dart';
-import '../Components/headerBar.dart';
-import '../Components/bottomNavBar.dart' as bottomnavbar;
+import '../controllers/database_helper.dart';
 
-class ReportBookPage extends StatelessWidget {
+class StudentReportBook extends StatefulWidget {
+  @override
+  _StudentReportBookPageState createState() => _StudentReportBookPageState();
+}
+
+class _StudentReportBookPageState extends State<StudentReportBook> {
+  final DatabaseHelper _dbHelper = DatabaseHelper();
+  List<Map<String, dynamic>> _students = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadStudentIDs();
+  }
+
+  Future<void> _loadStudentIDs() async {
+    print('Loading student IDs...');
+    var students = await _dbHelper.getAllStudentIDs();
+    print('Student IDs loaded: $students');
+    setState(() {
+      _students = students;
+    });
+  }
+
+  Future<void> _showNoteDialog(String studentId) async {
+    var report = await _dbHelper.getReport(studentId);
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Note for $studentId'),
+          content: Text(report?['note'] ?? 'No note found for this student ID'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(135),
-        child: HeaderBar(),
+      appBar: AppBar(
+        title: Text('Student Report Book'),
+        backgroundColor: Color.fromRGBO(90, 158, 183, 1),
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Icon(Icons.book, size: 40),
-                  SizedBox(width: 10),
-                  Text(
-                    'Report Book',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: _students.isEmpty
+            ? Center(child: CircularProgressIndicator())
+            : ListView.builder(
+          itemCount: _students.length,
+          itemBuilder: (context, index) {
+            return Card(
+              margin: const EdgeInsets.symmetric(vertical: 8.0),
+              child: ListTile(
+                title: Text(_students[index]['studentId']),
+                trailing: Icon(Icons.arrow_forward),
+                onTap: () => _showNoteDialog(_students[index]['studentId']),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.all(8.0),
-                itemCount: 3, // Number of semesters
-                itemBuilder: (context, semesterIndex) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Text(
-                          'Semester ${semesterIndex + 1}',
-                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      ListView.builder(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: 4, // Number of terms in each semester
-                        itemBuilder: (context, termIndex) {
-                          return GestureDetector(
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: Text('Term ${termIndex + 1} - Semester ${semesterIndex + 1}'),
-                                    content: Container(
-                                      width: 100,
-                                      height: 100,
-                                      child: Center(
-                                        child: Text('Performance and exam results for Term ${termIndex + 1}, Semester ${semesterIndex + 1}'),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 8.0),
-                              child: Container(
-                                height: 80,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Term ${termIndex + 1}',
-                                        style: TextStyle(fontSize: 18),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
